@@ -5,8 +5,11 @@ Koha needs the following entities:
 - branch
 - item type
 - patron category
-- patron
+- (item statuses) authorised values
+- circulation rules
 - bibliographic data
+- item data
+- patron
 
 ## Process:
 - Prepare or extract example data from source.
