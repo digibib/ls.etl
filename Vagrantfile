@@ -19,10 +19,13 @@ Vagrant.configure("2") do |config|
   apt-get -y install chromium-browser
   apt-get -y install curl
   apt-get -y install cpanminus
+  apt-get -y install libmysqlclient-dev
   locale-gen nb_NO.UTF-8
   cpanm Catmandu
   cpanm HTTP::Request
   cpanm LWP::UserAgent
+  cpanm Catmandu::Store::DBI
+  cpanm DBD::mysql
 SCRIPT
 
   config.vm.provision :docker do |d|
