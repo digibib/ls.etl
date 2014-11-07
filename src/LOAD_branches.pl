@@ -21,15 +21,11 @@ my $importCount = $importer->each(sub {
                 $response = $ua->request($request);
                 if ($response->is_success) {
      				my $message = $response->decoded_content;
-                    print "HTTP response code: ", $response->code, "\n";
-                    print "HTTP header: ", $response->header('Location'), "\n";;
-    				print "Received reply: $message\n";
+                    print "HTTP response code/Location:\t", $response->code, "\t", $response->header('Location'), "\n";
                     $successCount++;       
 				}
 				else {
-    				print "HTTP POST error code: ", $response->code, "\n";
-                    print "HTTP header: ", $response->header('Location'), "\n";;
-    				print "HTTP POST error message: ", $response->message, "\n";
+    				print "HTTP response code/message:\t", $response->code, "\t", $response->message, "\n";
 				}
 });
 
