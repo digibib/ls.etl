@@ -38,6 +38,7 @@ there are three mechanisms to support this:
 We prefer loading by api.
 
 Mapping of entities to import-function in Koha:
+
 Entity | Mechanism | Name
 ------ | --------- | ----
 branch | api       | koha-restful/Branch.pm
