@@ -12,7 +12,7 @@ my $request = HTTP::Request->new( "POST", $uri, $headers );
 my $ua = LWP::UserAgent->new;
 my $response;
 
-my $importer = Catmandu::Importer::CSV->new(file => "../files/branches.csv");
+my $importer = Catmandu::Importer::CSV->new(file => "/data/branches.csv");
 my $successCount = 0;
 
 my $importCount = $importer->each(sub {

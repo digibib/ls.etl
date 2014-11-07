@@ -7,6 +7,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.synced_folder "test", "/home/vagrant/vm-test"
+  config.vm.synced_folder "data", "/data"
 
   config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "ls-etl"
@@ -20,6 +21,8 @@ Vagrant.configure("2") do |config|
   apt-get -y install cpanminus
   locale-gen nb_NO.UTF-8
   cpanm Catmandu
+  cpanm HTTP::Request
+  cpanm LWP::UserAgent
 SCRIPT
 
   config.vm.provision :docker do |d|

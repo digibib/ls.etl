@@ -46,7 +46,7 @@ run_restful:
 
 run_koha:
 	@vagrant ssh -c 'sudo docker run -d --name koha_docker --volumes-from=koha_restful \
-	-p 80:80 -p 8080:8080 -p 8081:8081 -t digibib/koha' || echo "koha_docker container \
+	-p 80:80 -p 3306:3306 -p 8080:8080 -p 8081:8081 -t digibib/koha' || echo "koha_docker container \
 	already running, please _make delete_ first"
 
 logs:
@@ -61,6 +61,9 @@ test_sanity:
 	@echo "======= TESTING KOHA-RESTFUL SANITY ======\n"
 	vagrant ssh -c 'cd vm-test && python test.py koha_docker'
 
+load_branches:
+	@echo "======= LOADING BRANCHES ======\n"
+	vagrant ssh -c 'cd /vagrant/src && perl LOAD_branches.pl /data/etl/branches.csv'
 
 clean:
 	vagrant destroy --force
