@@ -16,8 +16,7 @@ my $importer = Catmandu::Importer::CSV->new(file => "/data/branches.csv");
 my $successCount = 0;
 
 my $importCount = $importer->each(sub {
-                my $post_data = shift;
-                my $post_data = to_json($post_data);
+                my $post_data = to_json(shift);
                 $request->content($post_data);
                 $response = $ua->request($request);
                 if ($response->is_success) {
