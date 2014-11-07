@@ -6,14 +6,14 @@ use HTTP::Response;
 use LWP::UserAgent;
 use JSON;
 
-my $uri = "http://localhost:8080//cgi-bin/koha/rest.pl/branch";
+my $uri = "http://localhost:8080/cgi-bin/koha/rest.pl/branch";
 my $headers = HTTP::Headers->new( Content_Type => 'application/json' );
 my $request = HTTP::Request->new( "POST", $uri, $headers );
 my $ua = LWP::UserAgent->new;
 my $response;
 
 my $importer = Catmandu::Importer::CSV->new(file => "../files/branches.csv");
-my $succesCount = 0;
+my $successCount = 0;
 
 my $importCount = $importer->each(sub {
                 my $post_data = shift;
@@ -25,7 +25,7 @@ my $importCount = $importer->each(sub {
                     print "HTTP response code: ", $response->code, "\n";
                     print "HTTP header: ", $response->header('Location'), "\n";;
     				print "Received reply: $message\n";
-                    $succesCount++;       
+                    $successCount++;       
 				}
 				else {
     				print "HTTP POST error code: ", $response->code, "\n";
@@ -35,10 +35,10 @@ my $importCount = $importer->each(sub {
 });
 
 print "Extracted: $importCount items\n";
-print "Loaded: $succesCount items\n";
+print "Loaded: $successCount items\n";
 
-if ($importCount == $succesCount) {
-    print "SUCCES!\n";
+if ($importCount == $successCount) {
+    print "SUCCESS!\n";
     exit 0;
 }
 else {
