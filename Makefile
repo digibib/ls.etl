@@ -1,6 +1,6 @@
 .PHONY: all test clean
 
-all: reload build run
+all: reload run
 
 reload: halt up provision
 
