@@ -45,4 +45,4 @@ branch | api       | koha-restful/Branch.pm
 
 
 ## ETL-software (opensource):
-- librecat/catmandu
+* [LibreCat/Catmandu](http://librecat.org/)
